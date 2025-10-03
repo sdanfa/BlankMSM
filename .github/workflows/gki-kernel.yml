@@ -209,8 +209,8 @@ jobs:
             echo "Adding SukiSU..."
             curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash $BRANCH
             cd KernelSU
-            git revert -m 1 $(git log --grep="ksud: Add KSU_SUKISU to env" --pretty=format:"%h") -n || true
-            # git revert -m 1 $(git log --grep="kernel: Handle unmount for isolated process correctly" --pretty=format:"%h") -n || true
+            git revert -m 1 $(git log --grep="KSU_SUKISU" --pretty=format:"%h") -n || true
+            # git revert -m 1 $(git log --grep="remove devpts hook" --pretty=format:"%h") -n
           fi
 
       - name: Apply SUSFS Patches for KernelSU Variants
@@ -363,6 +363,7 @@ jobs:
           echo "CONFIG_KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_KSU_MANUAL_SU=n" >> ./common/arch/arm64/configs/gki_defconfig
 
           # Add additional tmpfs config setting
           echo "CONFIG_TMPFS_XATTR=y" >> ./common/arch/arm64/configs/gki_defconfig
