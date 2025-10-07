@@ -153,6 +153,7 @@ jobs:
         - Manual Syscall Hooks
         - Wireguard Support
         - BBR Support
+        - [baseband_guard.c](https://github.com/vc-teahouse/Baseband-guard/blob/main/baseband_guard.c) added
 
         Usage: 
           - Use [HorizonKernelFlasher](https://github.com/libxzr/HorizonKernelFlasher). Don't use Kernel Flasher, it is broken.
